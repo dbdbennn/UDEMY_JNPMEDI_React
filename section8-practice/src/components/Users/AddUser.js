@@ -30,7 +30,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <Card cssClass={classes.input}>
+    <Card className={classes.input}>
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
         <input
