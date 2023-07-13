@@ -1,15 +1,16 @@
 import { useRef, useState } from "react";
+
 import Input from "../../UI/Input";
 import classes from "./MealItemForm.module.css";
 
 const MealItemForm = (props) => {
-  const amountImputRef = useRef();
   const [amountIsValid, setAmountIsValid] = useState(true);
+  const amountInputRef = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const enteredAmount = amountImputRef.current.value;
+    const enteredAmount = amountInputRef.current.value;
     const enteredAmountNumber = +enteredAmount;
 
     if (
@@ -27,10 +28,12 @@ const MealItemForm = (props) => {
   return (
     <form className={classes.form} onSubmit={submitHandler}>
       <Input
-        ref={amountImputRef}
+        ref={
+          amountInputRef
+        } /*Ref prop doesn't work for custom components out the box*/
         label="Amount"
         input={{
-          id: "amount",
+          id: "amount_" + props.id,
           type: "number",
           min: "1",
           max: "5",
