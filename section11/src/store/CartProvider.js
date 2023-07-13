@@ -4,17 +4,17 @@ import CartContext from "./cart-context";
 
 const defaultCartState = {
   items: [],
-  totalAmout: 0,
+  totalAmount: 0,
 };
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updateItems = state.items.concat(action.item);
     const updateTotalAmount =
-      state.totalAmout + action.item.price * action.item.amount;
+      state.totalAmount + action.item.price * action.item.amount;
     return {
       items: updateItems,
-      totalAmout: updateTotalAmount,
+      totalAmount: updateTotalAmount,
     };
   }
   if (action.type === "REMOVE") return defaultCartState;
@@ -34,7 +34,7 @@ const CartProvider = (props) => {
 
   const cartContext = {
     items: cartState.items,
-    totalAmout: cartState.totalAmout,
+    totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemToCartHandler,
   };
